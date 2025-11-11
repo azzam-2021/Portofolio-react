@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'Impact';
+    src: url('./Font/impact.woff') format('woff'),
+         url('./Font/Impacted.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
