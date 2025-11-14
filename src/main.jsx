@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import '@fontsource-variable/rubik';
 import './index.css'
 import Header from './Header'
 import Hero from './Hero'

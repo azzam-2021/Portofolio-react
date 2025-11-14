@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily:{
         impact:["impact","sans-serif"],
+        rubik:["rubik","sans-serif"]
       }
     },
   },
