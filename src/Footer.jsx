@@ -1,17 +1,22 @@
 export default function Footer(){
     return(
-        <footer className="bg-black/40 border-t border-yellow-400/10 py-12 mt-10">
-            <div className="max-w-4xl mx-auto text-center px-4 text-yellow-400">
-                <div className="mb-6 max-w-xl mx-auto">
-                    <p className="italic font-rubik text-base md:text-lg font-light leading-relaxed tracking-wide">
+        <footer className="bg-zinc-950 border-t border-zinc-900 py-12">
+            <div className="max-w-4xl mx-auto text-center px-4">
+                {/* Quote section yang lebih berjarak dan puitis */}
+                <div className="mb-8 max-w-lg mx-auto space-y-2">
+                    <p className="text-zinc-400 italic font-rubik text-sm md:text-base font-light leading-relaxed tracking-wide">
                         "Everyone here has done bad things. You can't escape the past."
                     </p>
-                    <p className="text-xs md:text-sm tracking-widest font-rubik mt-2 text-yellow-400/70 uppercase">
+                    <p className="text-[10px] md:text-xs tracking-[0.2em] font-rubik text-yellow-400/60 font-medium uppercase">
                         — Yelena Belova
                     </p>
                 </div>
-                <div className="text-yellow-400/40 text-xs font-rubik tracking-wider border-t border-yellow-400/5 pt-6">
-                    <p>Copyright &copy; 2025 Azzam Siddiq. All Rights Reserved.</p>
+                
+                {/* Divider Line Kecil */}
+                <div className="w-12 h-[1px] bg-yellow-400/20 mx-auto mb-6"></div>
+
+                <div className="text-zinc-600 text-[11px] font-rubik tracking-widest uppercase">
+                    <p>Copyright &copy; {new Date().getFullYear()} Azzam Siddiq. All Rights Reserved.</p>
                 </div>
             </div>
         </footer>
