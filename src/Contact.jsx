@@ -2,6 +2,7 @@ import wa from './assets/wa.svg';
 import ig from './assets/ig.svg';
 import gmail from './assets/gm.svg';
 import linkedin from './assets/link.svg';
+import { motion as Motion } from 'motion/react';
 
 export default function Contact(){
     const socials = [
@@ -12,7 +13,14 @@ export default function Contact(){
     ];
 
     return(
-        <section id='Contact' className="py-24 px-6 text-center bg-gradient-to-t from-zinc-950 to-transparent">
+        <Motion.section
+            id='Contact'
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="py-24 px-6 text-center bg-gradient-to-t from-zinc-950 to-transparent"
+        >
             <h2 className="text-3xl md:text-4xl text-yellow-400 font-impact tracking-wider mb-4">
                 CONTACT
             </h2>
@@ -22,21 +30,27 @@ export default function Contact(){
             
             <div className='flex flex-wrap justify-center gap-6 max-w-xl mx-auto'>
                 {socials.map((social, index) => (
-                    <a 
+                    <Motion.a
                         key={index}
                         href={social.url} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className='w-14 h-14 md:w-16 md:h-16 p-4 bg-zinc-900/50 border border-zinc-800 rounded-2xl text-yellow-400 hover:text-black hover:bg-yellow-400 hover:border-yellow-400 hover:scale-110 hover:shadow-[0_0_25px_rgba(250,204,21,0.4)] transition-all duration-300 flex items-center justify-center group'
+                        initial={{ opacity: 0, scale: 0.85 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.35, delay: index * 0.08 }}
+                        whileHover={{ y: -5, scale: 1.08, boxShadow: "0 0 25px rgba(250,204,21,0.4)" }}
+                        whileTap={{ scale: 0.95 }}
+                        className='w-14 h-14 md:w-16 md:h-16 p-4 bg-zinc-900/50 border border-zinc-800 rounded-2xl text-yellow-400 hover:text-black hover:bg-yellow-400 hover:border-yellow-400 transition-colors duration-300 flex items-center justify-center group'
                     >
                         <img 
                             className="w-full h-full object-contain transition-all duration-300 group-hover:invert group-hover:brightness-0" 
                             src={social.img} 
                             alt={social.alt} 
                         />
-                    </a>
+                    </Motion.a>
                 ))}
             </div>
-        </section>
+        </Motion.section>
     );
 }

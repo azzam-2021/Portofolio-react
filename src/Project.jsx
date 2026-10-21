@@ -1,6 +1,7 @@
 import weather from './assets/weather-app.png';
 import slicing from './assets/slicing.png';
 import poster from './assets/poster.png';
+import { motion as Motion } from 'motion/react';
 
 export default function Project() {
     const projectList = [
@@ -33,29 +34,42 @@ export default function Project() {
     return (
         <section id="Project" className="py-24 px-6 max-w-6xl mx-auto scroll-smooth">
             {/* Title Section */}
-            <div className="text-center mb-16 relative">
+            <Motion.div
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="text-center mb-16 relative"
+            >
                 <h2 className="text-3xl md:text-4xl text-yellow-400 font-impact tracking-wider uppercase">
                     MY PROJECTS
                 </h2>
                 <div className="w-16 h-[2px] bg-yellow-400/30 mx-auto mt-4"></div>
-            </div>
+            </Motion.div>
 
             {/* Project Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
                 {projectList.map((project, index) => (
-                    <a 
+                    <Motion.a
                         key={index}
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex flex-col bg-zinc-900/30 border border-zinc-800/80 rounded-2xl overflow-hidden hover:border-yellow-400/40 hover:shadow-[0_0_30px_rgba(250,204,21,0.15)] hover:-translate-y-2 transition-all duration-500 backdrop-blur-md"
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{ duration: 0.5, delay: index * 0.12, ease: "easeOut" }}
+                        whileHover={{ y: -8, borderColor: "rgba(250,204,21,0.4)", boxShadow: "0 0 30px rgba(250,204,21,0.15)" }}
+                        whileTap={{ scale: 0.985 }}
+                        className="group flex flex-col bg-zinc-900/30 border border-zinc-800/80 rounded-2xl overflow-hidden transition-colors duration-300 backdrop-blur-md"
                     >
                         {/* Thumbnail Container (Efek Zoom Sinematik) */}
                         <div className="w-full h-48 md:h-52 overflow-hidden bg-zinc-950 relative border-b border-zinc-800/50">
                             {/* Overlay Gelap Halus di Atas Gambar */}
                             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent z-10 transition-opacity duration-300 group-hover:opacity-40"></div>
-                            <img 
-                                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out filter brightness-90 group-hover:brightness-100" 
+                            <Motion.img
+                                whileHover={{ scale: 1.08 }}
+                                className="w-full h-full object-cover transition-[filter] duration-700 ease-out filter brightness-90 group-hover:brightness-100"
                                 src={project.icon} 
                                 alt={project.alt} 
                             />
@@ -88,15 +102,21 @@ export default function Project() {
                                 </svg>
                             </div>
                         </div>
-                    </a>
+                    </Motion.a>
                 ))}
             </div>
 
             {/* Call to Action Tambahan */}
             <div className="text-center mt-20">
-                <p className="text-zinc-600 font-rubik tracking-[0.25em] text-xs md:text-sm font-medium uppercase animate-pulse">
+                <Motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-zinc-600 font-rubik tracking-[0.25em] text-xs md:text-sm font-medium uppercase"
+                >
                     • More projects are being engineered •
-                </p>
+                </Motion.p>
             </div>
         </section>
     );

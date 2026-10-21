@@ -1,6 +1,14 @@
+import { motion as Motion } from 'motion/react';
+
 export default function Footer(){
     return(
-        <footer className="bg-zinc-950 border-t border-zinc-900 py-12">
+        <Motion.footer
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="bg-zinc-950 border-t border-zinc-900 py-12"
+        >
             <div className="max-w-4xl mx-auto text-center px-4">
                 {/* Quote section yang lebih berjarak dan puitis */}
                 <div className="mb-8 max-w-lg mx-auto space-y-2">
@@ -19,6 +27,6 @@ export default function Footer(){
                     <p>Copyright &copy; {new Date().getFullYear()} Azzam Siddiq. All Rights Reserved.</p>
                 </div>
             </div>
-        </footer>
+        </Motion.footer>
     );
 }
